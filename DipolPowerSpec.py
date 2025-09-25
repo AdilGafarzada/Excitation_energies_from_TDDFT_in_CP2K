@@ -35,7 +35,7 @@ use_log = False
 normalize = False
 
 # load data 
-xlsx_path = r"Data\Na48_Atome\linearity check PBE-q1\PBE-q1-350fs-nonperiodic-0,01\Microsoft Excel-Arbeitsblatt (neu).xlsx"
+xlsx_path = r""
 time_s, dx, dy, dz = lade_zeit_und_dipol(xlsx_path)
 
 # Konstanten
@@ -120,4 +120,5 @@ def freq_to_energy(thz): return thz * 2 * np.pi * 1e12 * hbar_ev_s
 #ax_freq.set_xlim(energy_to_freq(0), energy_to_freq(8))
 
 plt.tight_layout()
+
 plt.show()
