@@ -32,7 +32,7 @@ def lade_zeit_und_dipol(xlsx_path, dt_fs=0.02):
     return time_s, parsed["x"].astype(float).values, parsed["y"].astype(float).values, parsed["z"].astype(float).values
 
 # path here
-xlsx_path = r"Data\Na64 Distance Test 3-14 A\33x33x55\10\Microsoft Excel-Arbeitsblatt (neu).xlsx"
+xlsx_path = r""
 time_s, dx, dy, dz = lade_zeit_und_dipol(xlsx_path)
 
 hbar_ev_s = 6.582119569e-16  # eV·s
