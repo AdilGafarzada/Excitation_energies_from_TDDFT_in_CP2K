@@ -30,7 +30,7 @@ def lade_zeit_und_dipol(xlsx_path, dt_fs=0.02):
     time_s = np.arange(N) * dt_fs * 1e-15
     return time_s, parsed["x"].astype(float).values, parsed["y"].astype(float).values, parsed["z"].astype(float).values
 
-# normalize & log-scale
+# normalize & log-scale switch
 use_log = False    
 normalize = False
 
@@ -76,13 +76,12 @@ abs_dz = np.abs(fourier_dz) * conversion_factor
 
 power_spec = abs_dx**2 + abs_dy**2 + abs_dz**2
 
-# Normierung
 if normalize:
     dipole_power = power_spec / np.max(power_spec)
 else:
     dipole_power = power_spec
 
-# Format y-Achse (bei log)
+# Format y-axis (if log)
 class MixedLogFormatter(ticker.LogFormatter):
     def __call__(self, x, pos=None):
         if x >= 1e-4:
@@ -115,10 +114,8 @@ ax_energy.set_xlim(0, 8)
 def energy_to_freq(ev): return ev / hbar_ev_s / (2 * np.pi * 1e12)
 def freq_to_energy(thz): return thz * 2 * np.pi * 1e12 * hbar_ev_s
 
-#ax_freq = ax_energy.secondary_xaxis('top', functions=(energy_to_freq, freq_to_energy))
-#ax_freq.set_xlabel("Frequency [THz]")
-#ax_freq.set_xlim(energy_to_freq(0), energy_to_freq(8))
 
 plt.tight_layout()
 
 plt.show()
+
